@@ -1,0 +1,29 @@
+{% extends 'layout/default.html' %}
+
+
+{% block title %}
+Post delete
+{% endblock title %}
+
+{% block content %}
+
+<h3>Вы хотите удалить эту публикацию?</h3>
+<div class="card">
+ <div class="card-header">
+   <h3>
+     {{ post.name }}
+   </h3>
+   <div>
+    Title: <span class="badge bg-info">{{ post.title }}</span>
+   </div>
+ </div>
+ <div class="card-body">
+   {{ post.description }}
+ </div>
+</div>
+<form method="POST">
+ {% csrf_token %}
+   <input class="btn btn-success" type="submit" value="Delete">
+</form>
+
+{% endblock content %}

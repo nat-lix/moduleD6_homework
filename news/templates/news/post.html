@@ -1,0 +1,16 @@
+{% extends 'layout/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+    {% if post %}
+    <h2> {{ post.title|censor }} </h2>
+    <p> {{ post.dateCreation }}</p>
+    <p> {{ post.text|censor }} </p>
+    {% else %}
+    <p>Нет такой публикации</p>
+    {% endif %}
+{% endblock content %}

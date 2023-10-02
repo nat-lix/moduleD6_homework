@@ -1,0 +1,44 @@
+{% extends 'layout/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+Posts
+{% endblock title %}
+
+{% block content %}
+<h1>Все публикации</h1>
+<p> Всего публикаций на портале: {{ posts|length }} </p>
+    {% if posts %} 
+
+    <form method="GET">
+        {{ filter.form }}
+        <input class="btn btn-primary" type="submit" value="Найти">
+     </form>
+
+        {% for post in filter.qs %}
+        <h3> {{ post.title|censor }} </h3>
+        <p> {{ post.dateCreation|date:'j M Y f' }} </p>
+        <p> {{ post.text|truncatechars:50|censor }} </p>
+
+        {% for category in post.postCategory.all %}
+        <a href="{% url 'news:categories' category.id %}">{{category}}</a>
+        {% endfor %}
+
+        <a href="{% url 'news:post_update' post.id %}">
+            Update
+        </a>
+        <a href="{% url 'news:post_delete' post.id %}">
+            Delete
+        </a>
+
+        {% endfor %}
+
+       
+
+{% include 'parts/paginator.html' %}
+
+    {% else %} 
+        <h2>Публикаций нет!</h2>
+    {% endif %}
+
+{% endblock content %}

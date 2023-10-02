@@ -1,0 +1,24 @@
+{% extends 'layout/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+Search
+{% endblock title %}
+
+{% block content %}
+<h1>Поиск публикации</h1> 
+
+    <form method="GET">
+        {{ filter.form }}
+        <input class="btn btn-primary" type="submit" value="Найти">
+     </form>
+
+        {% for post in filter.qs %}
+        <h3> {{ post.title|censor }} </h3>
+        <p> {{ post.dateCreation|date:'j M Y f' }} </p>
+        <p> {{ post.text|truncatechars:50|censor }} </p>
+        {% endfor %}
+
+{% include 'parts/paginator.html' %}
+
+{% endblock content %}

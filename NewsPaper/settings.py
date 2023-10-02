@@ -163,7 +163,7 @@ ACCOUNT_FORMS = {'signup': 'sign.forms.CommonSignupForm'}
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'TalaTheCat'
-EMAIL_HOST_PASSWORD = 'm0_ne@bAck'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_SSL = True
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER + 'talathecat@yandex.ru'
